@@ -132,7 +132,8 @@ class DockerSpawner(Spawner):
     extra_start_kwargs = Dict(config=True, help="Additional args to pass for container start")
     extra_host_config = Dict(config=True, help="Additional args to create_host_config for container create")
 
-    _container_safe_chars = set(string.ascii_letters + string.digits + '-')
+    # added '.' to safe chars so that google addresses with dots will work
+    _container_safe_chars = set(string.ascii_letters + string.digits + '-.')
     _container_escape_char = '_'
 
     hub_ip_connect = Unicode(
